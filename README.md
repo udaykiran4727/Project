@@ -19,27 +19,17 @@ cd frontend && npm install && npm run dev
 
 Backend tests: `cd backend && go test ./...`
 
-## Design notes
+## Assumptions
 
-- No auth — assumes trusted internal users
-- SQLite for zero-infra simplicity at team scale
-- Create/delete only, no edit — matched the requested scope
+- Trusted internal users, no auth required — matches the real `go/` model
+- Shortcuts are case-sensitive, no namespacing
 
-## API
+## Tradeoffs
 
-| Method | Path | Description |
-|---|---|---|
-| POST | `/api/links` | Create a link |
-| GET | `/api/links` | List all links |
-| GET | `/api/links/:id` | Get one link |
-| DELETE | `/api/links/:id` | Delete a link |
-| GET | `/:shortcut` | Redirects to the destination |
+- **SQLite over Postgres** — zero infra to run, simpler for this scope
+- **Create/delete only, no edit** — matched the requested API surface
 
 
 ## What I'd add next
 
-- Auth & permissions
-- Edit support
-- Pagination on link list
-- CI (Go tests + TypeScript build) on push
-- Frontend tests
+- If time permits, I'd add the funtionality to sort the shortcuts either by the time of creation or alphabetical order and also would like to add some permissions as well.
