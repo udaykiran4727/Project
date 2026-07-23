@@ -1,4 +1,4 @@
-# Go Links (URL Shortner)
+# Go Links (URL Shortener)
 
 A simple internal "go links" service — short shortcuts (`go/oncall`, `go/design-system`)
 that redirect to real URLs. Think of it as a mini self-hosted URL shortener for a team.
@@ -18,6 +18,12 @@ cd frontend && npm install && npm run dev
 
 
 Backend tests: `cd backend && go test ./...`
+
+## Design notes
+
+- No auth — assumes trusted internal users
+- SQLite for zero-infra simplicity at team scale
+- Create/delete only, no edit — matched the requested scope
 
 ## API
 
